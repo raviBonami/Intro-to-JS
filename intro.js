@@ -256,3 +256,71 @@ console.log(obj2);
 
 // Functions are also an object, A function object includes a string which holds the actual code -- 
 // the function body -- of the function. The code is literally just a string
+
+//////////////////////////////////////////////////////////////////////////////
+
+// Pass by value and pass by reference
+// In JS, all values are pass by values only
+function func5(a,b){
+    a = a+1;
+    b = b-1;
+    return a*b;
+}
+const variable1 = 5;
+const variable2 = 8;
+const result11 = func5(variable1, variable2)
+console.log(result11);
+console.log(variable1,variable2)
+// Here, in function pass by value is done, the variable1 and 2 are first copied and new copied variables are
+// being modified inside the function and the original variables remain unchanged.
+
+// Pass by reference for non-primitive datatypes
+
+let obj5 = {
+    name: 'qwerty',
+    age: 24
+}
+console.log(obj5);
+function func6(obj){
+    obj.age += 1;
+}
+
+func6(obj5);
+console.log(obj5);
+
+// Now even though it might seem the function func6 is getting a reference value of obj5 and then changing
+// its age, but its not the case.
+// It is still pass by value in its parameter even though non-primitive argument is passed. this happened because
+// JS internally creates a new variable and refers it to the same object, so any changes made to the object inside 
+// the function is reflected outside too, but the variable being passed is actual variable and not a reference, so 
+// it means that it is still getting pass by value.
+// If instead of changing the property, we tried pointing the object reference to a new object, then it wouldn't 
+// work.
+
+
+//////////////////////////////////////////////////////////////////////
+
+// Unary operator - 
+// +variableName
+// If variable value is string (but a number) , changes it to number
+// If false, changes it to 0, if true changes it to 1
+
+let answer = 'xyz' && (0==1) && (0==0);
+console.log(answer + " answer")
+// Goes from left to right, if all values are truthy, takes last expression value, if any value if falsy
+// takes that value
+
+answer = (0==1) || (0==0) || (1==2)
+console.log(answer + " answer 2")
+// Goes from left, if any value is truthy, takes next truthy value else takes last expression value
+
+// Operator Precedance - Not, And, Or
+
+// Logical Assignemnt Operators - 
+// 1. Logical OR - x ||= y => x is assigned value of y only if x is falsy
+
+// 2. Logical AND - x &&= y => x is assigned value of y if x is truthy
+
+// 3. Nullish operator = x ??= y => y is assigned to x if x is either null or undefined
+
+// Exponent - x ** n => raised x to power of n
