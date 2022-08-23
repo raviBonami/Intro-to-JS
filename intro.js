@@ -104,3 +104,50 @@ function hoisted(){
 
 // Hoisting - JavaScript engine physically moves function declarations to the top of the code before executing them
 
+// Functions - First class citizens
+// In JS, functions are first-class citizens - stored in variables, passed as arguement to other functions, 
+// return functions as value from other functions
+
+// 1. Storing function as variable
+function fun1(a,b){
+    return a-b;
+}
+
+const fun2 = fun1;
+// fun2 variables holds a reference of fun1 function 
+const result1 = fun2(10,5)  
+// Executing the second variable executes the original function
+console.log(result1)
+
+// 2. Passing function as an arguement 
+ function fun3(a,b,fn){
+    const res = fn(a,b)
+    return res;
+ }
+
+ const result2 = fun3(100,50,fun1)
+ // function fun1 is being passed as an argument to function fun3
+ console.log(result2)
+
+ console.log(typeof fun3) // O/p's function
+
+
+ // 3. Returning a function as  return value of a function
+ function fun4(){
+    return function(a,b){
+        return a*b;
+    }
+ }
+
+//  const result3 = fun4()   // Function currying
+//  const result4 = result3(5,7)
+
+const result3 = fun4()(5,7)     // It does what above two commands do in two statements in one statement only
+ console.log(result3)
+ // The function which is the return value of fun4 is returned when we execute fun4(), then when we again execute it 
+ // either by executing the variable or currying the function, we execute the returned value which is another function,
+ // so then this function gets executed and it o/p's the result.
+
+ 
+
+
