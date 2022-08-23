@@ -190,6 +190,7 @@ const arrow1 = () => {
 // 'function' keyword is omitted, after parenthesis => is used.
 
 
+
 /////////////////////////////////////////////////////
 
 // Datatypes - 
@@ -324,3 +325,28 @@ console.log(answer + " answer 2")
 // 3. Nullish operator = x ??= y => y is assigned to x if x is either null or undefined
 
 // Exponent - x ** n => raised x to power of n
+
+// Recursive functions - 
+// Function that calls itself
+function recursiveFunc(num){
+    if(num == 0 || num == 1){
+        return num;
+    }else{
+        return recursiveFunc(num-1) * num;
+    }
+}
+
+const recurRes = recursiveFunc(5);
+console.log("Recursion " + recurRes)
+
+// Default parameters - 
+// JS functions can be provided with default values to parameters passed if no value is passed
+// on during function call.
+
+function defaultParams(num = 5){
+    return num * 10;
+}
+
+const def1 = defaultParams(2);
+const def2 = defaultParams();
+console.log('Default params = ' + def1 + " " + def2);
