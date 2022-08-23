@@ -1,4 +1,3 @@
-// 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
 
 
 // Variables - Variables are of dynamic typed in JS, can be re-assigned to different type
@@ -36,6 +35,9 @@ const d = 5;
 // can't be re-assigned, it will remain undefined
 
 // Both let and const have block scope, hence accessible inside the blocks in which they are defined
+
+// Undefined variables - Those variables which have been initialized but currently do not hold any value
+// Undeclared variables - Varialse not even initialized
 
 
 //////////////////////////////////////////////////////////
@@ -142,12 +144,115 @@ console.log(result1)
 //  const result3 = fun4()   // Function currying
 //  const result4 = result3(5,7)
 
-const result3 = fun4()(5,7)     // It does what above two commands do in two statements in one statement only
- console.log(result3)
+const result3 = fun4()(5,7);     // It does what above two commands do in two statements in one statement only
+console.log(result3);
  // The function which is the return value of fun4 is returned when we execute fun4(), then when we again execute it 
  // either by executing the variable or currying the function, we execute the returned value which is another function,
  // so then this function gets executed and it o/p's the result.
 
- 
 
 
+// Anonymous functions - 
+// Functions that do not have a name in their declaration are called as anonymous functions
+(function () {
+    // Content inside it 
+    console.log("Anonymous function");
+    // const abc = "abc"
+});
+// If we don't enclose the anonymous function with brackets, then it will throw an error
+// () makes the anonymous function an expression that returns a function object.
+// Above function won't get executed as there is no way to reference to it to execute it
+// An anonymous function is not accessible after its initial creation.
+
+// If we place () after the above function object , it will get executed as soon as it is 
+// reached, this is called IIFE - Immeadiately Invoked Function Expression
+
+(function (){
+    console.log("I am an IIFE");
+})();
+
+// Assigning anonymous functions to variables
+let anonFunc1 = function (){
+    console.log("Anonymous function assigned to a variable");
+}
+
+anonFunc1();
+
+// Anonymous function as arguments
+setTimeout(function(){
+    console.log("Anonymous function passed as argument")
+},1000)
+
+// Arrow functions - Different way of declaring functions in JS
+const arrow1 = () => {
+    console.log('Arrow function');
+}
+// 'function' keyword is omitted, after parenthesis => is used.
+
+
+/////////////////////////////////////////////////////
+
+// Datatypes - 
+
+// Primitive and Reference types
+
+// Primitive -
+// 1. String - holds any set of characters
+// Strings are immutable, This means that it cannot be modified once created
+let str1 = "abc"
+
+// 2. number - 
+let num1 = 10;
+
+// NaN - Not a number => special numeric value denoting invalid number, ex: dividing by 0
+// Big int is also there, denoted number larger than normal number
+
+// 3. boolean - true or false (holds either true or false)
+let bool1 = true;
+// All other data types can be converted into boolean in JS
+// Null, undefined, 0 or Nan, empty string = All these are falsy and all others are truthy in JS
+
+
+// 4. Null - has only one value i.e null
+// null is an assignment value. It can be assigned to a variable as a representation of no value
+let null1 = null;
+console.log(typeof null1); // returns object
+
+// 5. Undefined - has only 1 value i.e undefined for it
+// undefined means a variable has been declared but has not yet been assigned a value
+let undef1;     // Value of this variable is undefined
+typeof undef1 // Also undefined
+
+// When a variable is defined by us but not given any value, it is assigned undefined by JS, whereas if there
+// is some variable whose value we want to be remain empty, we put its value as null.
+
+// 6. Symbol - Special type 
+// The Symbol function creates a new unique value every time you call it.
+let sym1 = Symbol();
+// A unique value will be assigned to sym1, this value will be unique in its entirety
+
+
+// Reference Types - 
+// Objects - All reference types in JS are object types
+let obj1 = {};      
+
+let obj2 = {
+    fName: 'abc',
+    lName: 'xyz',
+    age: 25
+}
+
+// In objects , we can add everything including any primitive datatype, arrays, another object , functions etc
+
+// To access any property of an object
+console.log(obj2.fName);    // Dot notation
+
+console.log(obj2['lName']); // Array-like notation
+
+// Adding new key-value pairs to object
+obj2.place = "Delhi";
+
+console.log(obj2);
+
+// Functions are also an object, A function object includes a string which holds the actual code -- 
+// the function body -- of the function. The code is literally just a string
